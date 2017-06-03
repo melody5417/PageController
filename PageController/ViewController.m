@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TestView.h"
 
 @interface ViewController () <NSPageControllerDelegate>
 @property (nonatomic, strong) NSPageController *pageController;
@@ -57,17 +58,29 @@
 
 
 - (NSString *)pageController:(NSPageController *)pageController identifierForObject:(id)object {
-    return @"picture";
+    if ([self.data indexOfObject:object]%2 == 1) {
+        return @"pic";
+    }
+    return @"picture1";
 }
 
 - (NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier {
-    return [[NSViewController alloc] initWithNibName:@"imageview" bundle:nil];
+    if ([identifier isEqualToString:@"pic"]) {
+        return [[TestView alloc] initWithNibName:@"TestView" bundle:nil];
+    } else {
+        return [[NSViewController alloc] initWithNibName:@"imageview" bundle:nil];
+    }
+
 }
 
 -(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id)object {
     // viewControllers may be reused... make sure to reset important stuff like the current magnification factor.
 
     // Normally, we want to reset the magnification value to 1 as the user swipes to other images. However if the user cancels the swipe, we want to leave the original magnificaiton and scroll position alone.
+    if ([viewController isKindOfClass:[TestView class]]) {
+        viewController.representedObject = object;
+        return ;
+    }
 
     BOOL isRepreparingOriginalView = (self.initialSelectedObject && self.initialSelectedObject == object) ? YES : NO;
     if (!isRepreparingOriginalView) {
