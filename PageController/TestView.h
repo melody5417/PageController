@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TestView : NSViewController
-
+@property (nonatomic, strong) NSImage *image;
 @end

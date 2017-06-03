@@ -78,7 +78,7 @@
 
     // Normally, we want to reset the magnification value to 1 as the user swipes to other images. However if the user cancels the swipe, we want to leave the original magnificaiton and scroll position alone.
     if ([viewController isKindOfClass:[TestView class]]) {
-        viewController.representedObject = object;
+        [(TestView *)viewController setImage:object];
         return ;
     }
 

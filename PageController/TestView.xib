@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TestView">
             <connections>
+                <outlet property="imageView" destination="BgY-6p-ajF" id="mCx-R5-m9c"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -31,11 +32,7 @@
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BgY-6p-ajF" customClass="AutoSizingImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="85"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="gIW-aZ-6tQ">
-                                            <connections>
-                                                <binding destination="-2" name="value" keyPath="self.representedObject" id="Fa1-yv-2y0"/>
-                                            </connections>
-                                        </imageCell>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="gIW-aZ-6tQ"/>
                                     </imageView>
                                 </subviews>
                             </view>

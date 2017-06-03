@@ -7,8 +7,10 @@
 //
 
 #import "TestView.h"
+#import "AutoSizingImageView.h"
 
 @interface TestView ()
+@property (weak) IBOutlet AutoSizingImageView *imageView;
 
 @end
 
@@ -17,6 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+}
+
+- (void)setImage:(NSImage *)image {
+    if (image) {
+        [self.imageView setImage:image];
+    }
 }
 
 @end
