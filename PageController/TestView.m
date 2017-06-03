@@ -10,16 +10,23 @@
 #import "AutoSizingImageView.h"
 
 @interface TestView ()
-@property (weak) IBOutlet AutoSizingImageView *imageView;
-
+@property (nonatomic, strong) AutoSizingImageView *imageView;
 @end
 
 @implementation TestView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
+- (instancetype)init {
+    if (self = [super init]) {
+        NSView *contentView = [[NSView alloc] initWithFrame:NSZeroRect];
+        [self setView:contentView];
+
+        self.imageView = [[AutoSizingImageView alloc] initWithFrame:self.view.bounds];
+        self.imageView.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
+        [self.view addSubview:self.imageView];
+    }
+    return self;
 }
+
 
 - (void)setImage:(NSImage *)image {
     if (image) {

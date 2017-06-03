@@ -66,7 +66,7 @@
 
 - (NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier {
     if ([identifier isEqualToString:@"pic"]) {
-        return [[TestView alloc] initWithNibName:@"TestView" bundle:nil];
+        return [[TestView alloc] init];
     } else {
         return [[NSViewController alloc] initWithNibName:@"imageview" bundle:nil];
     }
